@@ -8,6 +8,17 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- ═══ ANALYTICS PRIME90 — mismos IDs que en index.html ═══ -->
+<!-- META PIXEL -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1250140250527873');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1250140250527873&ev=PageView&noscript=1"/></noscript>
+<!-- GOOGLE ANALYTICS 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7W2LF31FTZ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-7W2LF31FTZ');</script>
+<!-- MICROSOFT CLARITY -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","wzceo3jx0k");</script>
+
 <style>
   :root { --purple:#8b5cf6; --purple-dark:#6d28d9; }
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -395,6 +406,56 @@
 </div>
 
 <script>
+// ═══════════════════════════════════════════════════════════════
+//  CHECKOUT TRACKING — Prime90
+// ═══════════════════════════════════════════════════════════════
+
+// UTM passthrough desde landing
+(function(){
+  var p = new URLSearchParams(window.location.search);
+  var u = {};
+  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){
+    if(p.get(k)) u[k] = p.get(k);
+  });
+  if(Object.keys(u).length) sessionStorage.setItem('p90_utms', JSON.stringify(u));
+})();
+
+function track(event, params) {
+  params = params || {};
+  try { var u = JSON.parse(sessionStorage.getItem('p90_utms')||'{}'); Object.assign(params, u); } catch(e){}
+  if(typeof fbq !== 'undefined') {
+    var std = ['ViewContent','AddToCart','InitiateCheckout','Purchase','Lead'];
+    if(std.indexOf(event) > -1) fbq('track', event, params);
+    else fbq('trackCustom', event, params);
+  }
+  if(typeof gtag !== 'undefined') gtag('event', event, params);
+}
+
+// InitiateCheckout al cargar la página
+window.addEventListener('load', function(){
+  track('InitiateCheckout', {
+    value: 19900,
+    currency: 'ARS',
+    content_ids: ['prime90_ebook'],
+    content_name: 'Reconstrucción Total',
+    num_items: 1
+  });
+});
+
+// Purchase (proxy) al hacer clic en cualquier botón de pago
+document.querySelectorAll('a[href*="mpago.li"]').forEach(function(link){
+  link.addEventListener('click', function(){
+    track('Purchase', {
+      value: 19900,
+      currency: 'ARS',
+      content_ids: ['prime90_ebook'],
+      content_name: 'Reconstrucción Total',
+      content_type: 'product',
+      num_items: 1
+    });
+  });
+});
+
 // ── REVEAL ON SCROLL ──
 const reveals = document.querySelectorAll('.reveal');
 const obs = new IntersectionObserver(e => {
