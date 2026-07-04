@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compra confirmada — Prime90 | Braian Navarrete</title>
+<meta name="description" content="Tu compra de Prime90 fue confirmada. Accedé a tu ebook y bonos.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- ═══ ANALYTICS PRIME90 — mismos IDs que en index.html/checkout.html ═══ -->
+<!-- META PIXEL -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1250140250527873');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1250140250527873&ev=PageView&noscript=1"/></noscript>
+<!-- GOOGLE ANALYTICS 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7W2LF31FTZ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-7W2LF31FTZ');</script>
+<!-- MICROSOFT CLARITY -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","wzceo3jx0k");</script>
+
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#050508; color:#f1f1f1; font-family:'Inter',sans-serif; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px; }
+
+  .grad-text { background:linear-gradient(135deg,#c084fc,#818cf8,#38bdf8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+  .card {
+    max-width:520px; width:100%; text-align:center;
+    background:rgba(10,10,20,0.8); border:1px solid rgba(139,92,246,0.25);
+    border-radius:24px; padding:48px 32px;
+    box-shadow:0 0 60px rgba(139,92,246,0.2);
+    animation:fadeInUp 0.6s ease forwards;
+  }
+  @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+  .check-circle {
+    width:84px; height:84px; margin:0 auto 24px;
+    border-radius:50%; background:rgba(16,185,129,0.12); border:2px solid rgba(52,211,153,0.5);
+    display:flex; align-items:center; justify-content:center; font-size:42px;
+  }
+
+  h1 { font-family:'Space Grotesk',sans-serif; font-size:clamp(26px,5vw,36px); font-weight:800; margin-bottom:14px; }
+  p { color:#94a3b8; font-size:15px; line-height:1.7; }
+
+  .btn-cta {
+    background:linear-gradient(135deg,#7c3aed,#4f46e5);
+    color:white; font-weight:900; letter-spacing:0.5px;
+    padding:20px 36px; border-radius:14px; border:none;
+    cursor:pointer; text-decoration:none; display:block;
+    font-size:17px; text-align:center; margin:28px 0 20px;
+    box-shadow:0 0 40px rgba(139,92,246,0.5);
+    transition:all 0.3s;
+  }
+  .btn-cta:hover { transform:translateY(-2px); box-shadow:0 0 60px rgba(139,92,246,0.7); }
+
+  .email-note {
+    display:flex; align-items:center; gap:10px; text-align:left;
+    background:rgba(139,92,246,0.06); border:1px solid rgba(139,92,246,0.2);
+    border-radius:14px; padding:16px 18px; font-size:13px; color:#a78bfa;
+    margin-bottom:8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="check-circle">✅</div>
+  <h1>¡Compra <span class="grad-text">confirmada!</span></h1>
+  <p>Gracias por tu confianza. Tu acceso a <strong style="color:white;">Prime90</strong> — el ebook completo y todos los bonos — ya está listo.</p>
+
+  <a href="https://drive.google.com/drive/folders/1JDnjCZmWnJwh93JY6IObAUXWvdlk5Dps" target="_blank" rel="noopener" class="btn-cta">
+    📂 Acceder a mi material ahora
+  </a>
+
+  <div class="email-note">
+    📧 También te enviamos este mismo link a tu email. Si no lo ves en unos minutos, revisá spam/promociones.
+  </div>
+
+  <p style="margin-top:20px;font-size:13px;">¿Alguna duda? Escribinos y te ayudamos.</p>
+</div>
+
+<script>
+  // Trackear conversión solo si MercadoPago confirmó el pago como aprobado
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var status = params.get('status') || params.get('collection_status');
+    if (status && status !== 'approved') return;
+
+    var payload = {
+      value: 7900,
+      currency: 'ARS',
+      content_ids: ['prime90_ebook'],
+      content_name: 'Reconstrucción Total',
+      content_type: 'product',
+      num_items: 1
+    };
+    if (typeof fbq !== 'undefined') fbq('track', 'Purchase', payload);
+    if (typeof gtag !== 'undefined') gtag('event', 'purchase', payload);
+  })();
+</script>
+
+</body>
+</html>
