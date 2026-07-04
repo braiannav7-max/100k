@@ -307,7 +307,7 @@
     <div style="margin-bottom:32px;">
       <div style="color:#64748b;font-size:15px;text-decoration:line-through;margin-bottom:4px;">Valor del sistema: $57.000 ARS</div>
       <div style="font-size:clamp(52px,10vw,80px);font-weight:900;line-height:1;color:white;font-family:'Space Grotesk',sans-serif;">
-        <span style="font-size:32px;vertical-align:super;color:#a78bfa;">$</span>19.900
+        <span style="font-size:32px;vertical-align:super;color:#a78bfa;">$</span>7.900
       </div>
       <div style="color:#94a3b8;font-size:15px;margin-top:8px;">ARS · Pago único · Para siempre tuyo</div>
     </div>
@@ -417,7 +417,7 @@
 <!-- STICKY BOTTOM CTA -->
 <div class="sticky-cta" id="stickyCta">
   <a href="https://mpago.li/2z37V8V" target="_blank" rel="noopener" class="btn-cta" onclick="return validarEmail(event)" style="display:block;font-size:15px;padding:15px;border-radius:14px;">
-    🔥 QUIERO PRIME90 — $19.900 ARS
+    🔥 QUIERO PRIME90 — $7.900 ARS
   </a>
 </div>
 
@@ -450,7 +450,7 @@ function track(event, params) {
 // InitiateCheckout al cargar la página
 window.addEventListener('load', function(){
   track('InitiateCheckout', {
-    value: 19900,
+    value: 7900,
     currency: 'ARS',
     content_ids: ['prime90_ebook'],
     content_name: 'Reconstrucción Total',
@@ -462,7 +462,7 @@ window.addEventListener('load', function(){
 document.querySelectorAll('a[href*="mpago.li"]').forEach(function(link){
   link.addEventListener('click', function(){
     track('Purchase', {
-      value: 19900,
+      value: 7900,
       currency: 'ARS',
       content_ids: ['prime90_ebook'],
       content_name: 'Reconstrucción Total',
@@ -489,8 +489,8 @@ function validarEmail(e) {
   input.style.borderColor = '#10b981';
   if(error) error.style.display = 'none';
   localStorage.setItem('p90_buyer_email', val);
-  track('email_entered', { value: 19900, currency: 'ARS' });
-  track('Lead', { value: 19900, currency: 'ARS' });
+  track('email_entered', { value: 7900, currency: 'ARS' });
+  track('Lead', { value: 7900, currency: 'ARS' });
   return true;
 }
 
