@@ -472,22 +472,16 @@ document.querySelectorAll('a[href*="mpago.li"]').forEach(function(link){
   });
 });
 
-// ── EMAIL CAPTURE ──
+// ── EMAIL CAPTURE (opcional, no bloquea el pago) ──
 function validarEmail(e) {
   var input = document.getElementById('buyerEmail');
   var error = document.getElementById('emailError');
-  if(!input) return true; // si el campo no existe en esta parte, dejar pasar
+  if(error) error.style.display = 'none';
+  if(!input) return true;
   var val = input.value.trim();
   var ok = val && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
-  if(!ok) {
-    input.style.borderColor = '#f87171';
-    if(error) error.style.display = 'block';
-    input.focus();
-    if(e) e.preventDefault();
-    return false;
-  }
+  if(!ok) return true;
   input.style.borderColor = '#10b981';
-  if(error) error.style.display = 'none';
   localStorage.setItem('p90_buyer_email', val);
   track('email_entered', { value: 7900, currency: 'ARS' });
   track('Lead', { value: 7900, currency: 'ARS' });
